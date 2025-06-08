@@ -23,7 +23,7 @@ public class binaryTrees {
 			newNode.right=buildTree(nodes);//recursively builds rightsubtree
 			return newNode;
 			}
-		public void preorderTraversal(Node root) {//first root, left subtree, right subtree
+		public static void preorderTraversal(Node root) {//first root, left subtree, right subtree
 			if(root==null) {
 				return;
 			}
@@ -31,7 +31,7 @@ public class binaryTrees {
 			preorderTraversal(root.left);
 			preorderTraversal(root.right);
 		}
-		public void inorderTraversal(Node root) {// left subtree,root, right subtree
+		public static void inorderTraversal(Node root) {// left subtree,root, right subtree
 			if(root==null) {
 				return;
 			}
@@ -39,13 +39,43 @@ public class binaryTrees {
 			System.out.print(root.value+" ");
 			preorderTraversal(root.right);
 		}
-		public void postorderTraversal(Node root) {//left subtree,right subtree, root
+		public static void postorderTraversal(Node root) {//left subtree,right subtree, root
 			if(root==null) {
 				return;
 			}
 			postorderTraversal(root.left);
 			postorderTraversal(root.right);
 			System.out.print(root.value+" ");
+		}
+		public static void levelorderTraversal(Node root) {//level wise 
+			if(root==null) {
+				return;
+			}
+			Queue<Node> que=new LinkedList<>();//create a queue ds for FIFO property
+			que.add(root);//add the root 
+			que.add(null);//add null
+			while(!que.isEmpty()) {//check if queue is empty
+				Node curr=que.remove();//since queue is not empty remove the node 
+				if(curr==null) {//checks if node is null
+					System.out.println();//this means the node is null and next line should be printed 
+					if(que.isEmpty()) {
+						break;
+					}else {
+						que.add(null);
+					}
+				}else {
+					System.out.print(curr.value+" ");
+					if(curr.left!=null) {
+						que.add(curr.left);
+					}
+					if(curr.right!=null) {
+						que.add(curr.right);
+					}
+				}
+				
+				
+			}
+			
 		}
 	}
     public static void main(String[] args) {
@@ -61,6 +91,10 @@ public class binaryTrees {
 		System.out.println();
 		System.out.println("Postorder Traversal");
 		tree.postorderTraversal(root);
+		System.out.println();
+		System.out.println("Levelorder Traversal");
+		tree.levelorderTraversal(root);
+		
 	}
 
 }
