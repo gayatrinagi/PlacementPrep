@@ -27,7 +27,7 @@ public class kth_Ancestor{
         path.remove(path.size()-1);
         return false;
      }
-     static int kthAncestor(Node root,int key,int k){
+     static int kthAncestor(Node root,int key,int k){//space complexity- O(N)- better recursive approach
         ArrayList<Node> path=new ArrayList<>();
         boolean found= getPath(root,key,path);
         int i=path.size()-1;
