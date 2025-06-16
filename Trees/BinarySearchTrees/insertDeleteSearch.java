@@ -97,7 +97,7 @@ public class BST{
         }
         printRootToLeaf(root.left,path);
         printRootToLeaf(root.right,path);
-        path.remove(path.size()-1);
+        path.remove(path.size()-1);//this removes the last element in the path that is the leaf node
     }
     public static void main(String[] args){
 
