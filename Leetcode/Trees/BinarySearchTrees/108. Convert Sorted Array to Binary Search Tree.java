@@ -24,7 +24,7 @@ class Solution {
         root.right=helper(nums,mid+1,end);
         return root;
     }
-    public TreeNode sortedArrayToBST(int[] nums) {
+    public TreeNode sortedArrayToBST(int[] nums) {//Time complexity-O(N)
         TreeNode result =helper(nums,0,nums.length-1);
         return result;
     }
