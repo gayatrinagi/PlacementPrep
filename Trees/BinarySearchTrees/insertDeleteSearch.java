@@ -27,7 +27,7 @@ public class BST{
             return;
         }
         inorder(root.left);
-        System.out.print(root.data);
+        System.out.print(root.data+" ");
         inorder(root.right);
     }
     static  boolean search(Node root, int key){//O(H)= time complexity equal to height of tree
@@ -97,7 +97,17 @@ public class BST{
         }
         printRootToLeaf(root.left,path);
         printRootToLeaf(root.right,path);
-        path.remove(path.size()-1);//this removes the last element in the path that is the leaf node
+        path.remove(path.size()-1);
+    }
+    static Node mirror(Node root){
+        if(root==null){
+            return root;
+        }
+        Node leftS=mirror(root.left);
+        Node rightS=mirror(root.right);
+        root.right=leftS;
+        root.left=rightS;
+        return root;
     }
     public static void main(String[] args){
 
@@ -109,10 +119,16 @@ public class BST{
         // inorder(root);
         // System.out.print(search(root,15));
         // delete(root,1);
-        // inorder(root);
         // System.out.println();
         // printInRange(root,5,12);
-        printRootToLeaf(root,new ArrayList<>());
+        // printRootToLeaf(root,new ArrayList<>());
+        System.out.println( "original tree inorder Traversal");
+         inorder(root);
+         System.out.println();
+        mirror(root);
+
+        System.out.println( "mirror tree inorder Traversal");
+        inorder(root);
     }
 
 }
